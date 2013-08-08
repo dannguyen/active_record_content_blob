@@ -11,6 +11,8 @@ require 'active_record_content_blob'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
+#DatabaseCleaner.strategy = :truncation
+
 RSpec.configure do |config|
    # Use color in STDOUT
   config.color_enabled = true
@@ -44,4 +46,22 @@ ActiveRecord::Schema.define do
   end
 
   add_index :content_blobs, [:blobable_type, :blobable_id]
+
+
+  ##############
+  create_table :music_records, :force => true do |t|
+    t.string :name
+    t.timestamps
+  end
+
+  create_table :bad_records, :force => true do |t|
+    t.string :namez
+    t.string :contents
+    t.timestamps
+  end
+
 end
+
+
+
+
