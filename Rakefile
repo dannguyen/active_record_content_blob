@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "active_record_content_blob"
   gem.homepage = "http://github.com/dannguyen/active_record_content_blob"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Attach a TEXT/BLOB column to your model as a has_one}
+  gem.description = %Q{Loading up TEXT/BLOB columns can be slow}
   gem.email = "dansonguyen@gmail.com"
   gem.authors = ["Dan Nguyen"]
   # dependencies defined in Gemfile
