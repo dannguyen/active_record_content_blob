@@ -45,8 +45,8 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sqlite3>, [">= 0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.2.12"])
-      s.add_runtime_dependency(%q<activerecord>, [">= 3.2.12"])
+      s.add_runtime_dependency(%q<activesupport>, [">= 3.2.14"])
+      s.add_runtime_dependency(%q<activerecord>, [">= 3.2.14"])
       s.add_development_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
@@ -55,8 +55,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
     else
       s.add_dependency(%q<sqlite3>, [">= 0"])
-      s.add_dependency(%q<activesupport>, [">= 3.2.12"])
-      s.add_dependency(%q<activerecord>, [">= 3.2.12"])
+      s.add_dependency(%q<activesupport>, [">= 3.2.14"])
+      s.add_dependency(%q<activerecord>, [">= 3.2.14"])
       s.add_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
@@ -66,8 +66,8 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<sqlite3>, [">= 0"])
-    s.add_dependency(%q<activesupport>, [">= 3.2.12"])
-    s.add_dependency(%q<activerecord>, [">= 3.2.12"])
+    s.add_dependency(%q<activesupport>, [">= 3.2.14"])
+    s.add_dependency(%q<activerecord>, [">= 3.2.14"])
     s.add_dependency(%q<rspec>, ["~> 2.14.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])

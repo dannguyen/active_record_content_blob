@@ -88,8 +88,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (>= 3.2.12)
-  activesupport (>= 3.2.12)
+  activerecord (>= 3.2.14)
+  activesupport (>= 3.2.14)
   bundler
   database_cleaner
   jeweler (~> 1.8.4)

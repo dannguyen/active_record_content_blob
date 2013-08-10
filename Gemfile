@@ -11,5 +11,5 @@ end
 
 
 gem 'sqlite3'
-gem 'activesupport', ">=3.2.12"
-gem 'activerecord', ">=3.2.12"
+gem 'activesupport', ">=3.2.14"
+gem 'activerecord', ">=3.2.14"
