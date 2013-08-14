@@ -13,8 +13,7 @@ group :development do
 
 end
 
-gem 'rails', '3.2.14'
-
+gem 'rails'
 gem 'sqlite3'
 #gem 'activesupport', ">=3.2.14"
 #gem 'activerecord', ">=3.2.14"
