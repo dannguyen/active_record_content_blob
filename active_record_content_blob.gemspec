@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "active_record_content_blob"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Nguyen"]
@@ -29,8 +29,8 @@ Gem::Specification.new do |s|
     "lib/active_record_content_blob.rb",
     "lib/content_blob.rb",
     "lib/content_blob/blobable.rb",
-    "lib/generators/content_blob/migration_generator.rb",
-    "lib/generators/content_blob/templates/create_content_blobs.rb",
+    "lib/generators/content_blob_generator.rb",
+    "lib/generators/templates/create_content_blobs.rb",
     "spec/generator_helper.rb",
     "spec/lib/generators/migration_generator_spec.rb",
     "spec/lib/generators/migration_generator_test.rb",
