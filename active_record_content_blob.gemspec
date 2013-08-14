@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "active_record_content_blob"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dan Nguyen"]
-  s.date = "2013-08-08"
+  s.date = "2013-08-14"
   s.description = "Loading up TEXT/BLOB columns can be slow"
   s.email = "dansonguyen@gmail.com"
   s.extra_rdoc_files = [
@@ -25,11 +25,15 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "active_record_content_blob.gemspec",
     "lib/active_record_content_blob.rb",
     "lib/content_blob.rb",
     "lib/content_blob/blobable.rb",
-    "lib/generators/content_blob/content_blob_generator.rb",
+    "lib/generators/content_blob/migration_generator.rb",
     "lib/generators/content_blob/templates/create_content_blobs.rb",
+    "spec/generator_helper.rb",
+    "spec/lib/generators/migration_generator_spec.rb",
+    "spec/lib/generators/migration_generator_test.rb",
     "spec/spec_helper.rb",
     "spec/unit/blobable_spec.rb",
     "spec/unit/content_blob_spec.rb"
@@ -44,9 +48,8 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<rails>, ["= 3.2.14"])
       s.add_runtime_dependency(%q<sqlite3>, [">= 0"])
-      s.add_runtime_dependency(%q<activesupport>, [">= 3.2.14"])
-      s.add_runtime_dependency(%q<activerecord>, [">= 3.2.14"])
       s.add_development_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
@@ -54,9 +57,8 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<pry>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
     else
+      s.add_dependency(%q<rails>, ["= 3.2.14"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
-      s.add_dependency(%q<activesupport>, [">= 3.2.14"])
-      s.add_dependency(%q<activerecord>, [">= 3.2.14"])
       s.add_dependency(%q<rspec>, ["~> 2.14.0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
@@ -65,9 +67,8 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
     end
   else
+    s.add_dependency(%q<rails>, ["= 3.2.14"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
-    s.add_dependency(%q<activesupport>, [">= 3.2.14"])
-    s.add_dependency(%q<activerecord>, [">= 3.2.14"])
     s.add_dependency(%q<rspec>, ["~> 2.14.0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
