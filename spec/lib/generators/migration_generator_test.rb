@@ -5,7 +5,7 @@ require File.expand_path '../../../../lib/generators/content_blob_generator', __
 
 class MigrationGeneratorTest < Rails::Generators::TestCase
 
-  tests ActiveRecordContentBlob::MigrationGenerator
+  tests ContentBlobGenerator
   destination File.expand_path("../../tmp", __FILE__)
 
   setup :prepare_destination

@@ -1,21 +1,19 @@
 require 'rails/generators'
 require 'rails/generators/active_record'
 
-module ActiveRecordContentBlob
 
-  class MigrationGenerator < ActiveRecord::Generators::Base
-    argument :name, type: :string, default: 'create_content_blobs'
+class ContentBlobGenerator < ActiveRecord::Generators::Base
+  argument :name, type: :string, default: 'create_content_blobs'
 
 
-    source_root File.expand_path('../templates', __FILE__)
+  source_root File.expand_path('../templates', __FILE__)
 
-    def self.next_migration_number(path)
-      ActiveRecord::Generators::Base.next_migration_number(path)
-    end
-    # Copies the migration template to db/migrate.
-    def copy_files
-      migration_template 'create_content_blobs.rb', 'db/migrate/create_content_blobs_migration.rb'
-    end
+  def self.next_migration_number(path)
+    ActiveRecord::Generators::Base.next_migration_number(path)
+  end
+  # Copies the migration template to db/migrate.
+  def copy_files
+    migration_template 'create_content_blobs.rb', 'db/migrate/create_content_blobs_migration.rb'
   end
 end
 
