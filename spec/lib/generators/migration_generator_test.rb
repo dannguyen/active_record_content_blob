@@ -1,6 +1,6 @@
 require 'generator_helper'
 require "rails/generators"
-require File.expand_path '../../../../lib/generators/content_blob/migration_generator', __FILE__
+require File.expand_path '../../../../lib/generators/content_blob_generator', __FILE__
 
 
 class MigrationGeneratorTest < Rails::Generators::TestCase
