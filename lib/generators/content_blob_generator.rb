@@ -13,7 +13,7 @@ class ContentBlobGenerator < ActiveRecord::Generators::Base
   end
   # Copies the migration template to db/migrate.
   def copy_files
-    migration_template 'create_content_blobs.rb', 'db/migrate/create_content_blobs_migration.rb'
+    migration_template 'create_content_blobs.rb', 'db/migrate/create_content_blobs.rb'
   end
 end
 
