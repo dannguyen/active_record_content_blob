@@ -46,30 +46,58 @@ describe "Blobable" do
     end
   end
 
-  describe 'class convenience method ::build_with_blob' do 
+  describe 'class convenience method ::build_with_a_blob' do 
     context 'one argument' do 
       it 'should build associated content_blob with Hash :contents' do 
-        @record = MusicRecord.build_with_blob({name: 'X', contents: [1]})
+        @record = MusicRecord.build_with_a_blob({name: 'X', contents: [1]})
         expect(@record.contents).to eq [1]
       end
 
-      it 'should build no content_blob without :contents' do 
-        @record = MusicRecord.build_with_blob(name: 'X')
-        expect(@record.contents).to be_nil
+      it 'should build a content_blob, eq to first Hash, even without :contents' do 
+        @record = MusicRecord.build_with_a_blob(name: 'X')
+        expect(@record.contents).to eq( {name: 'X'})
       end
     end
 
     context 'second argument' do 
       it 'should use second argument as :contents for built blob' do 
-        @record = MusicRecord.build_with_blob({name: 'A'}, [99])
+        @record = MusicRecord.build_with_a_blob({name: 'A'}, [99])
         expect(@record.contents).to eq [99]
       end
     end
   end
 
+
+  context 'allow .prepare_content_blob hook to be redefined' do 
+    before(:each) do 
+      class MusicRecord < ActiveRecord::Base
+        def self.prepare_content_for_blob(some_content)
+          some_content.is_a?(Hash) ? [some_content] : Array(some_content)
+        end
+      end
+ 
+      MusicRecord
+    end
+
+    after(:each) do 
+      class MusicRecord < ActiveRecord::Base
+        def self.prepare_content_for_blob(some_content)
+          some_content
+        end
+      end      
+    end
+
+    it 'should redefine .prepare_content_blob as specified' do
+      @record = MusicRecord.build_with_a_blob({name: 'A'})
+      expect(@record.contents).to eq [{name: 'A'}]
+    end
+
+
+  end
+
   context 'scopes' do 
     before(:each) do 
-      @r1 = MusicRecord.create_with_blob(name: 'A', contents: ['Z'])
+      @r1 = MusicRecord.create_with_a_blob(name: 'A', contents: ['Z'])
       @r2 = MusicRecord.create(name: 'qqq')
     end
 

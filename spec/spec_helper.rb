@@ -4,6 +4,7 @@ require 'rspec'
 require 'active_record'
 require 'database_cleaner'
 require 'sqlite3'
+require 'pry'
 
 require 'active_record_content_blob'
 

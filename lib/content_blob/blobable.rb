@@ -22,31 +22,44 @@ module ActiveRecordContentBlob
 
     module ClassMethods 
 
+
+
       # returns a new record with an attached blob
-      def build_with_blob(hsh, blob_content=nil)
+      # e.g. Record.build_with_a_blob(record_hsh, record_big_hsh)
+      def build_with_a_blob(hsh, blob_content=nil)
         hsh_syms = hsh.symbolize_keys
-        # delete a possible :content_blob so that we can initialize
-        #   the record
-        
+
+        # exclude :contents from instantiating a new Record
         record = self.new(hsh_syms.reject{|k,v| k == :contents})
 
-        if blob_content.nil?
-          # then build a blob only if hsh_syms has :content_blob key
-          if hsh_syms.key?(:contents)
-            blob_content = hsh_syms[:contents]
-            record.build_a_blob(blob_content)
-          end
+        stuff = if blob_content.present?
+          # build a blob using :blob_content
+          blob_content
+        elsif c = hsh_syms[:contents]
+          c
         else
-          # second argument is for the blo
-          record.build_a_blob(blob_content)
+          # then build a blob from the hsh
+          hsh
         end
 
+
+        prepared_stuff = prepare_content_for_blob(stuff)
+
+        record.build_a_blob(prepared_stuff)
         return record
       end
 
-      def create_with_blob(hsh, blob_content=nil)
-        build_with_blob(hsh, blob_content).save
+
+
+      def create_with_a_blob(hsh, blob_content=nil)
+        build_with_a_blob(hsh, blob_content).save
       end
+
+      # allow this to be redefined
+      def prepare_content_for_blob(some_content)
+        some_content
+      end
+      
     end # classmethods
 
     ## instance methods    
@@ -54,6 +67,7 @@ module ActiveRecordContentBlob
       self.build_content_blob(contents: some_content)
     end
 
+  
 
     def has_blob?
       content_blob.exists?
