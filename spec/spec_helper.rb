@@ -11,9 +11,16 @@ require 'active_record_content_blob'
 # in ./support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-#DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
+
+  config.filter_run_excluding skip: true 
+  config.run_all_when_everything_filtered = true
+  config.filter_run :focus => true
+
+  config.mock_with :rspec
+
    # Use color in STDOUT
   config.color_enabled = true
 
@@ -26,10 +33,12 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
   end
+
   config.after(:each) do
     DatabaseCleaner.clean
   end
 end
+
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",

@@ -6,6 +6,7 @@ module ActiveRecordContentBlob
     extend ActiveSupport::Concern
     included do
 
+      # Not sure if this is a needed scope
       scope :has_blob, ->{joins(:content_blob)}
 
       if self.instance_methods.include?(:contents) || self.column_names.include?('contents')
@@ -51,6 +52,11 @@ module ActiveRecordContentBlob
     ## instance methods    
     def build_a_blob(some_content)
       self.build_content_blob(contents: some_content)
+    end
+
+
+    def has_blob?
+      content_blob.exists?
     end
 
 
