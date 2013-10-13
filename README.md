@@ -23,7 +23,7 @@ Include it in your `Gemfile`
 
 Run the `rake` task to modify your database
 
-    rails generate create_content_blobs:migration
+    rails generate content_blob
     rake db:migrate
 
 Sample usage:
