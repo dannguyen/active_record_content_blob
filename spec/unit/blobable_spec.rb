@@ -9,8 +9,6 @@ class BadRecord < ActiveRecord::Base; end
 describe "Blobable" do
   before(:each) do 
     DatabaseCleaner.clean
-    MusicRecord.delete_all
-    ContentBlob.delete_all
   end
 
   it 'should raise an error if a class has :contents as an actual field' do 
