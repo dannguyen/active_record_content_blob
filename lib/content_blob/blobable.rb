@@ -42,9 +42,7 @@ module ActiveRecordContentBlob
           hsh
         end
 
-
         prepared_stuff = prepare_content_for_blob(stuff)
-
         record.build_a_blob(prepared_stuff)
         return record
       end
@@ -63,14 +61,21 @@ module ActiveRecordContentBlob
     end # classmethods
 
     ## instance methods    
+    # First, see if blob exists
     def build_a_blob(some_content)
-      self.build_content_blob(contents: some_content)
+      if has_blob?
+        self.content_blob.assign_attributes(contents: some_content)
+      else
+        self.build_content_blob(contents: some_content)
+      end
+
+      self.content_blob
     end
 
   
 
     def has_blob?
-      content_blob.exists?
+      !content_blob.nil?
     end
 
 

@@ -32,17 +32,29 @@ describe "Blobable" do
       expect(@record.contents).to eq({'abc' => 123})
     end
 
-    it 'should overwrite existing blob' do 
-      @record.build_a_blob({'xyz'=>'999'})
-      expect(@record.content_blob.new_record?).to be_true
-      expect(@record.content_blob.valid?).to be_true
+    context 'existing blobs' do 
+      it 'should overwrite existing blob' do 
+        @record.build_a_blob({'xyz'=>'999'})
+        expect(@record.content_blob.new_record?).to be_true
+        expect(@record.content_blob.valid?).to be_true
 
-      @record.save
-      
-      @record = MusicRecord.find(@record.id)
-      expect(@record.contents['xyz']).to eq '999'
+        @record.save
+        
+        @record = MusicRecord.find(@record.id)
+        expect(@record.contents['xyz']).to eq '999'
 
-      expect(ContentBlob.count).to eq 1
+        expect(ContentBlob.count).to eq 1
+      end
+
+      it 'should keep same id of an existing blob' do 
+#ActiveRecord::Base.logger = Logger.new(STDOUT) if defined?(ActiveRecord::Base)
+        old_blob_id = @record.content_blob.id 
+
+        @record.build_a_blob({'xyz'=>'999'})
+        @record.save
+
+        expect(old_blob_id).to eq @record.content_blob.id
+      end
     end
   end
 
