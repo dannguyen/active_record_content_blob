@@ -13,7 +13,7 @@ module ActiveRecordContentBlob
         raise StandardError, "Cannot already have a :contents attribute or method"
       end
 
-      has_one :content_blob, as: :blobable, dependent: :destroy
+      has_one :content_blob, as: :blobable, dependent: :destroy, autosave: true
       # TODO: allow customization of :contents name
       # in case model already has a contents field
       delegate :contents, to: :content_blob, allow_nil: true 
