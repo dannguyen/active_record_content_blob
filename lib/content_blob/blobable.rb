@@ -47,8 +47,6 @@ module ActiveRecordContentBlob
         return record
       end
 
-
-
       def create_with_a_blob(hsh, blob_content=nil)
         build_with_a_blob(hsh, blob_content).save
       end

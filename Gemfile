@@ -6,8 +6,9 @@ group :development do
   gem "jeweler", "~> 1.8.8"
   gem 'database_cleaner', "=1.0.1"
   gem "pry"
+  gem 'sqlite3'
+
 end
 
-gem 'sqlite3'
 gem 'activesupport', "~> 3.2.14"
 gem 'activerecord', "~> 3.2.14"
